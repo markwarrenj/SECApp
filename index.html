@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
     <head>
-        <title>boorde</title>
+        <title>SECApp</title>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <link href="css/favicon.ico" rel="shortcut icon">
         <link rel="stylesheet" media="screen" type="text/css" href="css/main.css" />
@@ -33,7 +33,7 @@
 
   <nav>
     <core-toolbar>
-      <span>boord menu</span>
+      <span>menu items</span>
     </core-toolbar>
     <core-menu id="menu" valueattr="hash" selected="{{route}}" selectedmodel="{{selectedPage}}" on-core-select="{{ menuItemSelected }}" on-click="{{ ajaxLoad }}">
       <template repeat="{{page, i in pages}}">
@@ -46,7 +46,7 @@
   </nav>
 
   <core-toolbar tool flex>
-    <span>boord</span>
+    <span>SECApp</span>
     <span flex></span>
     <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
   </core-toolbar>
@@ -74,7 +74,7 @@ var ajax, pages, scaffold;
 var cache = {};
   
   template.pages = [
-    {name: 'home', hash: 'one', url: 'modules/home/mail.html'},
+    {name: 'home', hash: 'one', url: 'modules/home/main.html'},
     {name: 'history', hash: 'two', url: 'modules/history/history.html'},
     {name: 'profile', hash: 'three', url: 'modules/profile/profile.html'},
     {name: 'settings', hash: 'four', url: 'modules/settings/settings.html'},

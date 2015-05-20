@@ -1,4 +1,4 @@
-/* OFFICIAL GREEN #209065 */
+/* OFFICIAL BLUE SECApp #535298 */
 body {
   font-family: sans-serif;
   font-weight: 300;
@@ -17,12 +17,12 @@ core-animated-pages > * {
 }
 
 body /deep/ core-toolbar {
-  /*background-color: #209065;*/
+  /*background-color: #535298;*/
   color: #fff;
 }
 
 core-menu {
-  color: #0e3f2c;
+  color: #1e1d30;
   margin: 10px 0 0 0;
 }
 
@@ -48,11 +48,11 @@ core-menu > paper-item.core-selected {
 }
 
 paper-input /deep/ .focused-underline {
-    background-color: #209065;
+    background-color: #535298;
 }
 
 paper-fab[icon=send] {
-    background: #209065;
+    background: #535298;
     bottom: 9px;
 }
 
