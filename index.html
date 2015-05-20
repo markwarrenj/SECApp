@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+        <title>boorde</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <link href="css/favicon.ico" rel="shortcut icon">
+        <link rel="stylesheet" media="screen" type="text/css" href="css/main.css" />
+        <script src="components/webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="components/font-roboto/roboto.html">
+        <link rel="import" href="components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="components/core-icon-button/core-icon-button.html">
+        <link rel="import" href="components/core-menu/core-menu.html">
+        <link rel="import" href="components/core-item/core-item.html">
+        <link rel="import" href="components/paper-elements/paper-elements.html">
+        <link rel="import" href="components/core-ajax/core-ajax.html">
+        <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
+        <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html">                                
+        <link rel="import" href="components/custom-elements/x-chat-list.html"> 
+    </head>
+<body fullbleed vertical layout unresolved>
+
+<template is="auto-binding" id="t">
+
+<!-- Route controller. -->
+<flatiron-director route="{{route}}" autoHash></flatiron-director>
+
+<!-- Dynamic content controller -->
+<core-ajax id="ajax" url="{{selectedPage.page.url}}" handleas="document" on-core-response="{{ onResponse }}" hidden=""></core-ajax>
+
+<core-scaffold id="scaffold">
+
+  <nav>
+    <core-toolbar>
+      <span>boord menu</span>
+    </core-toolbar>
+    <core-menu id="menu" valueattr="hash" selected="{{route}}" selectedmodel="{{selectedPage}}" on-core-select="{{ menuItemSelected }}" on-click="{{ ajaxLoad }}">
+      <template repeat="{{page, i in pages}}">
+        <paper-item hash="{{page.hash}}" noink>
+          <core-item icon="settings"></core-item>
+          <a href="#{{page.hash}}">{{page.name}}</a>
+        </paper-item>
+      </template>
+    </core-menu>
+  </nav>
+
+  <core-toolbar tool flex>
+    <span>boord</span>
+    <span flex></span>
+    <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
+  </core-toolbar>
+  
+  <div layout horizontal center-center fit>
+    <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right">
+      <template repeat="{{page, i in pages}}">
+        <section hash="{{page.hash}}" layout vertical center-center>
+          <div> {{page.name}} </div>
+        </section>
+      </template>
+    </core-animated-pages>
+   </div>
+   
+   
+   </core-scaffold>
+   
+   </template>
+</body>
+<script>
+var DEFAULT_ROUTE = 'one';
+
+var template = document.querySelector('#t');
+var ajax, pages, scaffold;
+var cache = {};
+  
+  template.pages = [
+    {name: 'home', hash: 'one', url: 'modules/home/mail.html'},
+    {name: 'history', hash: 'two', url: 'modules/history/history.html'},
+    {name: 'profile', hash: 'three', url: 'modules/profile/profile.html'},
+    {name: 'settings', hash: 'four', url: 'modules/settings/settings.html'},
+    {name: 'about', hash: 'five', url: 'modules/about/about.html'},
+  ];
+
+  template.addEventListener('template-bound', function(e) {
+    scaffold = document.querySelector('#scaffold');
+    ajax = document.querySelector('#ajax');
+    pages = document.querySelector('#pages');
+
+    // Use URL hash for initial route. Otherwise, use the first page.
+    this.route = this.route || DEFAULT_ROUTE;
+  });
+  
+  template.menuItemSelected = function(e, detail, sender) {
+    if (detail.isSelected) {
+      // Need to wait one rAF so <core-ajax> has it's URL set.
+      this.async(function() { 
+        if (!cache[ajax.url]) {
+          ajax.go();
+        }
+  
+        scaffold.closeDrawer();
+      });
+    }    
+  };
+
+  template.ajaxLoad = function(e, detail, sender) {
+    e.preventDefault(); // prevent link navigation.
+  };
+
+  template.onResponse = function(e, detail, sender) {
+    var article = detail.response.querySelector('#article-content');
+    
+    //article.querySelector('.byline').remove();
+  
+    // Fix up image paths to not be local.
+    [].forEach.call(article.querySelectorAll('img'), function(img) {
+      img.setAttribute('src', img.src);
+    });
+  
+    var html = article.innerHTML;
+  
+    cache[ajax.url] = html; // Primitive caching by URL.
+
+    this.injectBoundHTML(html, pages.selectedItem.firstElementChild);
+  };
+  
+</script>
