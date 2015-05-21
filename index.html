@@ -66,6 +66,18 @@
    
    </template>
 </body>
+<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+
+<!-- Instantiate PubNub -->
+<script type="text/javascript">
+
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-cd09d455-45ea-4dd6-8b68-eb0d27b6d3f3',
+        subscribe_key: 'sub-c-0da4f520-ff6b-11e4-b575-02ee2ddab7fe'
+    });
+
+</script>
+
 <script>
 var DEFAULT_ROUTE = 'one';
 
@@ -75,10 +87,10 @@ var cache = {};
   
   template.pages = [
     {name: 'home', hash: 'one', url: 'modules/home/main.html'},
-    {name: 'history', hash: 'two', url: 'modules/history/history.html'},
-    {name: 'profile', hash: 'three', url: 'modules/profile/profile.html'},
-    {name: 'settings', hash: 'four', url: 'modules/settings/settings.html'},
-    {name: 'about', hash: 'five', url: 'modules/about/about.html'},
+    {name: 'eNews', hash: 'two', url: 'modules/history/history.html'},
+    {name: 'eDirectory', hash: 'three', url: 'modules/profile/profile.html'},
+    {name: 'eMemos', hash: 'four', url: 'modules/settings/settings.html'},
+    {name: 'settings', hash: 'five', url: 'modules/about/about.html'},
   ];
 
   template.addEventListener('template-bound', function(e) {
