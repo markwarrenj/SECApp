@@ -28,6 +28,7 @@
 
 <!-- Dynamic content controller -->
 <core-ajax id="ajax" url="{{selectedPage.page.url}}" handleas="document" on-core-response="{{ onResponse }}" hidden=""></core-ajax>
+<core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" handleAs="json" param='{"id":"id","title":"title","date":"date"}' response="{{news}}"></core-ajax>
 
 <core-scaffold id="scaffold">
 
@@ -84,6 +85,21 @@ var DEFAULT_ROUTE = 'one';
 var template = document.querySelector('#t');
 var ajax, pages, scaffold;
 var cache = {};
+
+  var xhr = new XMLHttpRequest();
+  xhr.open( 'GET', 'http://localhost/officeSystem/SECApp/app.news.json.php', true );
+  xhr.send();
+
+  xhr.onload = function () {    
+    //myFunction(myArr);          
+  };
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {                
+          //console.log(xhr.responseText);                 
+    }
+  }
+  
   
   template.pages = [
     {name: 'home', hash: 'one', url: 'modules/home/main.html'},
@@ -92,7 +108,7 @@ var cache = {};
     {name: 'eMemos', hash: 'four', url: 'modules/memo/memo.html'},
     {name: 'settings', hash: 'five', url: 'modules/settings/settings.html'},
   ];
-
+  
   template.addEventListener('template-bound', function(e) {
     scaffold = document.querySelector('#scaffold');
     ajax = document.querySelector('#ajax');
@@ -137,3 +153,4 @@ var cache = {};
   };
   
 </script>
+

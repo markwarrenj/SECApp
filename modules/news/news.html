@@ -1,3 +1,10 @@
 <div class="content" id="article-content">
-  <paper-button>Test Button</paper-button>
+ <template repeat="{{new in news}}">  
+  <core-list id="list" flex>
+      <div layout horizontal  center>
+        <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
+        <h1>{{new.title}}</h1>
+      </div>
+  </core-list>     
+ </template>   
 </div>
