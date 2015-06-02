@@ -17,7 +17,8 @@
         <link rel="import" href="components/core-ajax/core-ajax.html">
         <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
         <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html">                                
-        <link rel="import" href="components/custom-elements/x-chat-list.html"> 
+        <link rel="import" href="components/custom-elements/x-chat-list.html">
+        <link rel="import" href="components/core-image/core-image.html">
     </head>
 <body fullbleed vertical layout unresolved>
 
@@ -28,7 +29,7 @@
 
 <!-- Dynamic content controller -->
 <core-ajax id="ajax" url="{{selectedPage.page.url}}" handleas="document" on-core-response="{{ onResponse }}" hidden=""></core-ajax>
-<core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" handleAs="json" param='{"id":"id","title":"title","date":"date"}' response="{{news}}"></core-ajax>
+<core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" handleAs="json" param='{"id":"id", "title":"title", "date":"date", "thumbs":"thumbs"}' response="{{news}}"></core-ajax>
 
 <core-scaffold id="scaffold">
 
@@ -46,13 +47,13 @@
     </core-menu>
   </nav>
 
-  <core-toolbar tool flex>
+  <core-toolbar tool flex hero-p>
     <span>SECApp</span>
     <span flex></span>
     <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
   </core-toolbar>
   
-  <div layout horizontal center-center fit>
+  <div layout horizontal center-center fit attributes="selectedItem">
     <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right">
       <template repeat="{{page, i in pages}}">
         <section hash="{{page.hash}}" layout vertical center-center>
@@ -151,6 +152,33 @@ var cache = {};
 
     this.injectBoundHTML(html, pages.selectedItem.firstElementChild);
   };
-  
+
+ 
 </script>
 
+<script>
+
+    Polymer('music-demo', {
+
+      page: 0,
+
+      items: [
+        { artist: 'Mark W. J.', album: 'Team Tompinai', color: '#f4db33' },
+        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' }
+      ],
+
+      selectedAlbum: null,
+
+      transition: function(e) {
+        if (this.page === 0 && e.target.templateInstance.model.item) {
+          this.selectedAlbum = e.target.templateInstance.model.item;
+          this.page = 1;
+        } else {
+          this.page = 0;
+        }
+      }
+    });
+
+  </script>

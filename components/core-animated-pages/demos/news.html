@@ -63,6 +63,7 @@
       color: #fff;
       text-align: center;
       font-size: 48px;
+      
     }
 
     .container {
@@ -78,7 +79,7 @@
 
     .card-top {
       background: #f2da2f;
-      height: 240px;
+      height: 120px;
     }
 
     .card-top-2 {
@@ -87,7 +88,8 @@
     }
 
     .card-bottom {
-      padding: 24px;
+      padding: 8px;
+      background-color:#cccccc;
     }
 
     .headline {
@@ -168,27 +170,44 @@
       <core-toolbar class="tall toolbar">
         <core-icon icon="menu"></core-icon>
         <div flex>Highlights</div>
+        <!--
         <core-icon icon="social:share"></core-icon>
         <core-icon icon="bookmark"></core-icon>
         <core-icon icon="more-vert"></core-icon>
+        -->
       </core-toolbar>
 
       <div class="container" hero-p>
 
         <shadow-div class="card" hero-p onclick="stuff()">
-          <div class="card-top"></div>
-          <div class="card-bottom" hero-p>
+          <div class="card-top"><!--[TOP CARD 1]--></div>
+          <div class="card-bottom" hero-p><!--[BOTTOM CARD 1]-->
             <div class="headline">Google's Craziest Offices</div>
             <div class="source-container" hero-p layout horizontal center>
               <div class="icon" hero-id="icon-header" hero></div>
               <div class="two-lines">
-                <div class="source">The New York Times</div>
+                <div class="source">The New York Times 1</div>
                 <div class="time">36 minutes ago</div>
               </div>
             </div>
           </div>
+          <span flex>&nbsp;</>
+
+          <div class="card-top"><!--[TOP CARD 2]--></div>
+          <div class="card-bottom" hero-p><!--[BOTTOM CARD 2]-->
+            <div class="headline">Google's Craziest Offices</div>
+            <div class="source-container" hero-p layout horizontal center>
+              <div class="icon" hero-id="icon-header2" hero></div>
+              <div class="two-lines">
+                <div class="source">The New York Times 2</div>
+                <div class="time">36 minutes ago</div>
+              </div>
+            </div>
+          </div>
+
         </shadow-div>
 
+        <!--
         <div class="tiles-container" layout horizontal justified>
 
           <shadow-div class="tile"></shadow-div>
@@ -197,7 +216,7 @@
           <shadow-div class="tile"></shadow-div>
 
         </div>
-
+        -->
       </div>
 
     </section>
@@ -207,18 +226,18 @@
       <core-toolbar class="tall" hero-p>
 
         <core-toolbar class="tall toolbar-2" hero-id="icon-header" hero>
-          <div flex class="middle">T</div>
+          <div flex class="middle">Logo</div>
         </core-toolbar>
       </core-toolbar>
 
       <div class="container">
 
-        <shadow-div class="card" onclick="stuff()">
+        <shadow-div class="card">
           <div class="card-top-2"></div>
           <div class="card-bottom">
-            <div class="headline">Some long overflowing headline</div>
+            <div class="headline">[NEWS CONTENT]Some long overflowing headline</div>
             <div class="source-container" layout horizontal center>
-              <div class="icon" style="background:red;"></div>
+              <div class="icon" style="background:red;" onclick="stuff()"></div>
               <div class="two-lines">
                 <div class="source">The New York Times</div>
                 <div class="time">36 minutes ago</div>
@@ -227,6 +246,7 @@
           </div>
         </shadow-div>
 
+        <!--
         <div class="tiles-container" layout horizontal justified>
 
           <shadow-div class="tile"></shadow-div>
@@ -235,7 +255,8 @@
           <shadow-div class="tile"></shadow-div>
 
         </div>
-
+        -->
+        
       </div>
 
     </section>
