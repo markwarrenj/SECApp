@@ -126,7 +126,7 @@
 
       selectedAlbum: null,
 
-      transition: function(e) {console.log('tapped');
+      transition: function(e) {
         if (this.page === 0 && e.target.templateInstance.model.item) {
           this.selectedAlbum = e.target.templateInstance.model.item;
           this.page = 1;
