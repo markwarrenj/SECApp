@@ -25,7 +25,7 @@ body /deep/ core-toolbar {
 
 core-menu {
   color: #1e1d30;
-  margin: 10px 0 0 0;  
+  margin: 10px 0 0 0;
 }
 
 core-menu > paper-item {
