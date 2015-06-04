@@ -70,79 +70,8 @@ paper-fab[icon=send] {
     padding: 0 16px 6px 16px;
 }
 
-.card {
-  position: relative;
-  background-color: #fff;
-  border-radius: 2px;
-}
 
-.card-top {
-  background: #f2da2f;
-  height: 120px;
-}
 
-.card-top-2 {
-  background: #99f8b7;
-  height: 240px;
-}
 
-.card-bottom {
-  padding: 8px;
-  background-color:#cccccc;
-}
-
-.headline {
-  font-size: 24px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.icon {
-  position: relative;
-  background: #000;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.icon::after {
-  content: 'T';
-  font-size: 24px;
-  position: absolute;
-  top: 7px;
-  left: 13px;
-}
-
-.source-container {
-  margin-top: 16px;
-}
-
-.two-lines {
-  margin-left: 16px;
-}
-
-.source {
-  font-size: 14px;
-}
-
-.time {
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 12px;
-}
-
-.tiles-container {
-  margin-top: 16px;
-}
-
-.tile {
-  position: relative;
-  display: inline-block;
-  width: 85px;
-  height: 85px;
-  background: #fff;
-  border-radius: 2px;
-}
 
 
