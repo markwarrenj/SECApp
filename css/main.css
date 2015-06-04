@@ -14,7 +14,8 @@ core-animated-pages {
 
 core-animated-pages > * {
   border-radius: 5px;
-  background-color: white;overflow-y: auto;
+  background-color: white;
+  overflow-y: auto;
 }
 
 body /deep/ core-toolbar {
@@ -24,7 +25,7 @@ body /deep/ core-toolbar {
 
 core-menu {
   color: #1e1d30;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0 0;  
 }
 
 core-menu > paper-item {
