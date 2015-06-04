@@ -28,7 +28,7 @@
 
 <!-- Dynamic content controller -->
 <core-ajax id="ajax" url="{{selectedPage.page.url}}" handleas="document" on-core-response="{{ onResponse }}" hidden=""></core-ajax>
-<!--<core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" handleAs="json" param='{"id":"id", "title":"title", "date":"date", "thumbs":"thumbs"}' response="{{news}}"></core-ajax>-->
+<core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" handleAs="json" param='{"id":"id", "title":"title", "date":"date", "thumbs":"thumbs"}' response="{{news}}"></core-ajax>
 
 <core-scaffold id="scaffold">
 
@@ -68,18 +68,16 @@
    </template>
 </body>
 
-<!--
+
 <script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
--->
+
 
 <!-- Instantiate PubNub -->
 <script type="text/javascript">
-    /*
     var PUBNUB_demo = PUBNUB.init({
         publish_key: 'pub-c-cd09d455-45ea-4dd6-8b68-eb0d27b6d3f3',
         subscribe_key: 'sub-c-0da4f520-ff6b-11e4-b575-02ee2ddab7fe'
     });
-    */
 </script>
 
 <script>
@@ -89,7 +87,7 @@ var template = document.querySelector('#t');
 var ajax, pages, scaffold;
 var cache = {};
 
-/*
+
   var xhr = new XMLHttpRequest();
   xhr.open( 'GET', 'http://localhost/officeSystem/SECApp/app.news.json.php', true );
   xhr.send();
@@ -103,7 +101,6 @@ var cache = {};
           //console.log(xhr.responseText);                 
     }
   }
-*/  
   
   template.pages = [
     {name: 'home', hash: 'one', url: 'modules/home/main.html'},
