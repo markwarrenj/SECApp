@@ -1,7 +1,7 @@
 <polymer-element name="news-list">
 <template>
 <core-ajax auto url="http://localhost/officeSystem/SECApp/app.news.json.php" 
-                handleAs="json" param='{"rows":"5", "id":"{id}", "title":"{title}", "date":"{date}", "thumbs":"{thumbs}", "color":"{color}"}' 
+                handleAs="json" param='{"rows":"5", "id":"{id}", "title":"{title}", "date":"{date}", "thumbs":"{thumbs}", "color":"{color}", "text":"{text}"}' 
                 response="{{items}}"
                 >
 </core-ajax>
@@ -31,8 +31,9 @@
       }
 
       .chip-top {
-        width: 200px;
-        height: 200px;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
       }
 
       .chip-bottom {
@@ -82,11 +83,12 @@
         <div class="chip-container" hero-p on-tap="{{transition}}">
           <template repeat="{{items as item}}">
             <div class="chip" hero-id="{{item.id}}-{{item.date}}" hero?="{{selectedAlbum === item }}">
+                        <div layout horizontal center>
               <div class="chip-top" style="background:{{item.color}};" hero-id="{{item.id}}-{{item.date}}-art" hero?="{{selectedAlbum === item}}"></div>
               <div class="chip-bottom">
                 <div class="chip-album-title">{{item.title}}</div>
                 <div class="chip-artist">{{item.date}}</div>
-              </div>
+              </div></div>
             </div>
           </template>
         </div>
@@ -106,6 +108,7 @@
                 <div class="card-album-artist">{{selectedAlbum.date}}</div>
               </div>
             </div>
+            <div class="card-content">{{selectedAlbum.text}}</div>
           </div>
         </div>
 
